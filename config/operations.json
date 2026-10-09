@@ -1,0 +1,55 @@
+{
+  "$comment": "Operating assumptions. Freight, shrink and handling are the real cost of doing business in Indian F&V retail; a margin tool that only compares mandi price to retail price is a toy, because the two are never the whole cost.",
+
+  "network": {
+    "centre": "Bengaluru Regional Processing Centre",
+    "storeCount": 42,
+    "avgDailyVolumePerStoreKg": 118,
+    "name": "Illustrative metro cluster, 42 stores"
+  },
+
+  "costs": {
+    "freightInrPerKg": 1.85,
+    "freightNote": "62 km PC to dark store, then last mile, amortised over 5,000 kg/day",
+    "handlingInrPerKg": 0.95,
+    "handlingNote": "Grading, sorting, palletising at the PC",
+    "coldChainInrPerKg": 0.6,
+    "coldChainNote": "Applied to chilled lines only; set coldChainRequired per commodity",
+    "shrinkAllowancePct": {
+      "Bulb & Stem": 3.0,
+      "Brinjal & Cucurbit": 7.0,
+      "Leafy Greens": 12.0,
+      "Root Vegetables": 6.0,
+      "Fruit": 7.5
+    },
+    "shrinkNote": "Modelled shrinkage from grade-out plus transit loss. Expressed as a share of the *purchased* weight, so it is charged before margin, not after."
+  },
+
+  "margin": {
+    "targetGrossMarginPct": 22.0,
+    "warningMarginPct": 26.0,
+    "criticalMarginPct": 15.0,
+    "minMarginPct": 0.0,
+    "targetFillRatePct": 95.0,
+    "$note": "A sub-target margin is a warning; a negative one is a breach. Fill rate is tracked separately because a thin-margin line sold at a high rate can be more profitable than a fat-margin line that does not sell."
+  },
+
+  "thresholds": {
+    "priceSpikePct": 15.0,
+    "priceSpikeNote": "Day-on-day mandi move that triggers a PRICE_SPIKE flag",
+    "priceCollapsePct": 12.0,
+    "priceCollapseNote": "Day-on-day fall that triggers an opportunity flag -- cheap stock is worth taking if the shrink holds",
+    "costToRetailBufferPct": 6.0,
+    "costToRetailPct": 84.0,
+    "costToRetailNote": "The breach ceiling, EXPRESSED AS A MARGIN BUFFER rather than picked directly. 100 - (target 22% - buffer 6%) = 84%. These two settings must stay coherent: a hardcoded cost-to-retail ceiling can silently contradict the margin target, and a line that merely sits below target would then be reported as a breach rather than a watch. At 84% the line is 6pp under target, which is a real problem, not a rounding difference. Set the buffer to 0 for a strictly literal breach.",
+    "daysBelowTarget": 3,
+    "daysBelowTargetNote": "Consecutive days below target margin before escalating to REVIEW"
+  },
+
+  "sim": {
+    "startDate": "2026-10-05",
+    "shockProbability": 0.055,
+    "shockMagnitudePct": 18.0,
+    "shockNote": "Daily probability of a supply or weather shock. This is what makes the simulation interesting: F&V mandi rates do not random-walk politely, they jump."
+  }
+}

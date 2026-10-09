@@ -1,0 +1,135 @@
+{
+  "$comment": "Commodity reference data. Mandi prices are the All-India median modal wholesale rates reported for early October 2026, converted from the reported Rs/quintal to Rs/kg. Retail values are the All-India average retail prices for the same date. Both are public figures, not proprietary.",
+
+  "asOf": "2026-10-09",
+
+  "mandiSource": {
+    "potato": "Rs 1,200/qtl median of 606 mandis",
+    "onion": "Rs 4,500/qtl median of 567 mandis",
+    "tomato": "Rs 3,095/qtl median of 617 mandis"
+  },
+  "retailSource": "Department of Consumer Affairs all-India average retail price, Rs/kg",
+
+  "retailBasis": {
+    "$comment": "IMPORTANT. The DoCA retail figure is a consumption-weighted average across ALL channels, dominated by unorganised kirana trade. An organised retail chain's own shelf price sits materially above it, because the chain carries cold chain, wastage, staffing and card costs into the price. Using the all-India figure as an organised-retail shelf price would understate the achievable margin and flag most lines as breaches -- an artefact of the wrong denominator, not a real commercial signal.",
+    "allIndiaAverage": true,
+    "organisedUpliftPct": {
+      "$comment": "Per-commodity uplift from the all-India average to a plausible organised-retail shelf price. Larger for perishables, where the all-India average is most depressed by loose-trade sale of cosmetically-imperfect stock. Onion sits at 19% rather than lower because it is the tightest line in the basket: the DoCA onion average is weighted to loose trade selling at near-mandi, so an organised chain carrying 3% shrink plus Rs 2.80/kg of logistics genuinely needs a ~19% spread to clear a 22% margin. This is a real commercial constraint, not a fudge factor, and it is why the tool flags onion on any price rise.",
+      "potato": 14.0,
+      "onion": 19.0,
+      "tomato": 22.0,
+      "brinjal": 24.0,
+      "coriander": 20.0,
+      "banana": 16.0,
+      "ginger": 15.0,
+      "garlic": 18.0
+    }
+  },
+
+  "commodities": {
+    "potato": {
+      "label": "Potato (Agra)",
+      "category": "Bulb & Stem",
+      "mandiBase": 12.0,
+      "retailBase": 22.81,
+      "volatility": 0.055,
+      "seasonalAmplitude": 0.42,
+      "seasonalPeakDayOfYear": 300,
+      "drift": 0.0002,
+      "minPrice": 5.0,
+      "maxPrice": 60.0,
+      "perishable": true
+    },
+    "onion": {
+      "label": "Onion (Nashik Red)",
+      "category": "Bulb & Stem",
+      "mandiBase": 45.0,
+      "retailBase": 53.53,
+      "volatility": 0.085,
+      "seasonalAmplitude": 0.55,
+      "seasonalPeakDayOfYear": 30,
+      "drift": 0.0004,
+      "minPrice": 15.0,
+      "maxPrice": 140.0,
+      "perishable": true
+    },
+    "tomato": {
+      "label": "Tomato (Hybrid)",
+      "category": "Brinjal & Cucurbit",
+      "mandiBase": 30.95,
+      "retailBase": 42.74,
+      "volatility": 0.13,
+      "seasonalAmplitude": 0.48,
+      "seasonalPeakDayOfYear": 20,
+      "drift": 0.0,
+      "minPrice": 8.0,
+      "maxPrice": 110.0,
+      "perishable": true
+    },
+    "brinjal": {
+      "label": "Brinjal Purple Long",
+      "category": "Brinjal & Cucurbit",
+      "mandiBase": 24.0,
+      "retailBase": 43.26,
+      "volatility": 0.11,
+      "seasonalAmplitude": 0.40,
+      "seasonalPeakDayOfYear": 250,
+      "drift": 0.0,
+      "minPrice": 8.0,
+      "maxPrice": 90.0,
+      "perishable": true
+    },
+    "coriander": {
+      "label": "Coriander (Dhania)",
+      "category": "Leafy Greens",
+      "mandiBase": 20.0,
+      "retailBase": 44.31,
+      "volatility": 0.15,
+      "seasonalAmplitude": 0.35,
+      "seasonalPeakDayOfYear": 320,
+      "drift": 0.0,
+      "minPrice": 6.0,
+      "maxPrice": 80.0,
+      "perishable": true
+    },
+    "banana": {
+      "label": "Banana Robusta",
+      "category": "Fruit",
+      "mandiBase": 22.0,
+      "retailBase": 49.30,
+      "volatility": 0.065,
+      "seasonalAmplitude": 0.30,
+      "seasonalPeakDayOfYear": 340,
+      "drift": 0.0,
+      "minPrice": 10.0,
+      "maxPrice": 80.0,
+      "perishable": true
+    },
+    "ginger": {
+      "label": "Ginger (Kerala)",
+      "category": "Bulb & Stem",
+      "mandiBase": 24.0,
+      "retailBase": 34.88,
+      "volatility": 0.09,
+      "seasonalAmplitude": 0.38,
+      "seasonalPeakDayOfYear": 60,
+      "drift": 0.0002,
+      "minPrice": 10.0,
+      "maxPrice": 120.0,
+      "perishable": false
+    },
+    "garlic": {
+      "label": "Garlic (Girikonda)",
+      "category": "Bulb & Stem",
+      "mandiBase": 26.0,
+      "retailBase": 45.43,
+      "volatility": 0.08,
+      "seasonalAmplitude": 0.36,
+      "seasonalPeakDayOfYear": 70,
+      "drift": 0.0002,
+      "minPrice": 12.0,
+      "maxPrice": 150.0,
+      "perishable": false
+    }
+  }
+}
