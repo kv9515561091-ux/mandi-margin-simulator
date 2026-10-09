@@ -1,0 +1,36 @@
+{
+  "name": "mandi-margin-simulator",
+  "version": "1.0.0",
+  "description": "Simulate daily wholesale mandi prices and compute procurement margin against a full landed-cost stack, flagging where acquisition cost threatens retail profitability.",
+  "main": "src/index.js",
+  "bin": {
+    "mandi-margin": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js simulate",
+    "simulate": "node src/index.js simulate",
+    "test": "node --test test/margin.test.js",
+    "list": "node src/index.js list"
+  },
+  "keywords": [
+    "procurement",
+    "margin",
+    "mandi",
+    "wholesale",
+    "fruits-and-vegetables",
+    "supply-chain",
+    "retail",
+    "cli"
+  ],
+  "author": "Kattepogu Vamsi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kv9515561091-ux/mandi-margin-simulator.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
