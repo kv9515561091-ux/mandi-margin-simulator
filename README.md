@@ -271,3 +271,26 @@ and `npm test` runs on Node's built-in test runner.
 ## Licence
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+## Related projects
+
+Three companion projects on the same problem — how much of the gap between
+farm-gate cost and shelf price is recoverable in Indian F&V retail. They share
+a commodity master, a lane (Bengaluru PC → dark store, 62 km), and a set of
+grounded price and loss benchmarks. Each is a standalone repository; clone
+only the one you want.
+
+| project | question it answers | try it |
+| --- | --- | --- |
+| [fpo-sourcing-automation](https://github.com/kv9515561091-ux/fpo-sourcing-automation) | Can field data become a purchase-order line a buyer can act on? Apps Script; runs offline via a Python mirror | `python samples/generate_samples.py && python -m unittest discover -s samples` |
+| [fv-shrinkage-dashboard](https://github.com/kv9515561091-ux/fv-shrinkage-dashboard) | Why is stock being written off, and would enforcing rotation fix it? A counterfactual re-simulation attributes **57.3% of expiry** to FEFO failure | `pip install -r requirements.txt && python scripts/generate_data.py && python scripts/analyze.py` |
+| [transit-spoilage-anova](https://github.com/kv9515561091-ux/transit-spoilage-anova) | Which handling method extends shelf life? Finds that onions must **not** be chilled — worth ₹28.6 lakh/year on one lane | `pip install -r requirements.txt && python analysis/generate_experiment.py && python analysis/anova_analysis.py` |
+
+The connection worth noting: this tool's `shrinkAllowancePct` is a
+**planning assumption**, and the dashboard project measures what it should
+actually be — **4.29%** at the processing centre, with **57.3% of expiry
+traceable to picking out of date order rather than to the produce itself**.
+Tuning the allowance to the measured figure, rather than to a round number,
+is what turns this from a margin calculator into a decision tool.
