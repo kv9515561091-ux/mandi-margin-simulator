@@ -5,8 +5,15 @@
 The interesting part is not the price simulator. It is the margin convention.
 
 ```bash
+git clone https://github.com/kv9515561091-ux/mandi-margin-simulator.git
+cd mandi-margin-simulator
 node src/index.js simulate --days 30 --seed 99
 ```
+
+**No `npm install`.** There are zero runtime and zero dev dependencies — this
+uses Node's built-in `parseArgs` and `node:test`. Clone and run.
+
+Requires **Node 18+** (developed on 24). Works on any OS.
 
 ---
 
@@ -256,6 +263,11 @@ data/sample_run.csv  a committed 30-day run (seed 99)
 test/                49 tests
 ```
 
+## Requirements
+
+Node 18 or newer. Nothing to install — `package.json` declares no dependencies,
+and `npm test` runs on Node's built-in test runner.
+
 ## Licence
 
-MIT — see [LICENSE](LICENSE). Node ≥ 18, no runtime dependencies.
+MIT — see [LICENSE](LICENSE).
